@@ -1,24 +1,45 @@
-/* eslint-disable no-unused-vars */
 /* eslint-disable jsx-a11y/heading-has-content */
 import React from 'react';
-import '../index.css';
-import Header from './header/Header';
-import Footer from './footer/Footer';
-import Main from './main/Main';
-import PopupWithImage from './popupwithimage/PopupWithImage';
-import './App.css';
+import PopupWithImage from '../popupwithimage/PopupWithImage';
 
-function App() {
-  return (
-    <>
-        <Header />
-        <Main />
-        <Footer />
-        {/* <section className="modal modal_avatar">
+export default function Main(props) {
+// const []
+
+    function handleEditAvatarClick() {
+        document.querySelector('.modal_avatar').classList.add('modal_visible');
+    }
+
+    function handleEditProfileClick() {
+        document.querySelector('.modal_profile').classList.add('modal_visible');
+    }
+
+    function handleAddPlaceClick() {
+        document.querySelector('.modal_image').classList.add('modal_visible');
+    }
+    
+    return(
+        <main className="main">
+            <section className="profile">
+                <div className="profile__avatar-elements">
+                    <img className="profile__avatar" alt="User's profile." src="#" />
+                    <button className="profile__avatar-button" aria-label="Update profile photo" onClick={handleEditAvatarClick}></button>
+                </div>
+                <div className="profile__info-set">
+                    <h1 className="profile__info profile__info_name"></h1>
+                    <p className="profile__info profile__info_description"></p>
+                </div>
+                <button className="profile__edit-button" aria-label="Edit profile" onClick={handleEditProfileClick}></button>
+                <button className="profile__add-button" aria-label="Add new image" onClick={handleAddPlaceClick}></button>
+            </section>
+            <section className="grid">
+                <ul className="grid__photos">
+                </ul>
+            </section>
+            <section className="modal modal_avatar">
             <div className="modal__container">
                 <button className="modal__close modal__close_avatar"></button>
                 <div className="modal__background modal__background_avatar">
-                    <form action="#" className="modal__form modal__form_avatar" novalidate>
+                    <form action="#" className="modal__form modal__form_avatar" noValidate>
                     <h3 className="modal__title">Change profile picture</h3>
                         <fieldset className="modal__fieldset">
                             <label>
@@ -33,18 +54,18 @@ function App() {
             </div>
         </section>
         <section className="modal modal_profile">
-            <div className ="modal__container">
+            <div className="modal__container">
                 <button className="modal__close modal__close_profile"></button>
                 <div className="modal__background">
-                    <form action="#" className="modal__form modal__form_profile" novalidate>
+                    <form action="#" className="modal__form modal__form_profile" noValidate>
                         <h3 className="modal__title">Edit profile</h3>
                         <fieldset className="modal__fieldset">
                             <label>
-                                <input className="modal__input modal__input_name" name="name" type="text" placeholder="Name" minlength="2" maxlength="40" id="profile-name" />
+                                <input className="modal__input modal__input_name" name="name" type="text" placeholder="Name" minLength="2" maxLength="40" id="profile-name" />
                                 <span className="modal__input_error" id="profile-name-error"></span>
                             </label>
                             <label>
-                                <input className="modal__input modal__input_description" name="job" type="text" placeholder="About me" minlength="2" maxlength="200" id="profile-description" />
+                                <input className="modal__input modal__input_description" name="job" type="text" placeholder="About me" minLength="2" maxLength="200" id="profile-description" />
                                 <span className="modal__input_error" id="profile-description-error"></span>
                             </label>
                             <button className="modal__save-btn" type="submit">Save</button>
@@ -57,12 +78,12 @@ function App() {
             <div className="modal__container">
                 <button className="modal__close modal__close_image"></button>
                 <div className="modal__background">
-                    <form action="#" className="modal__form modal__form_image" novalidate>
+                    <form action="#" className="modal__form modal__form_image" noValidate>
                     <h3 className="modal__title">New place</h3>
                         <fieldset className="modal__fieldset">
                             <label>
                                 <input className="modal__input modal__input_caption" id="image-caption" name="card-caption"
-                                    type="text" placeholder="Title" value="" minlength="1" maxlength="100" required />
+                                    type="text" placeholder="Title" value="" minLength="1" maxLength="100" required />
                                 <span className="modal__input_error" id="image-caption-error"></span>
                             </label>
                             <label>
@@ -76,14 +97,8 @@ function App() {
                 </div>
             </div>
         </section>
-        <section className="modal modal_photo">
-            <figure className="modal__container">
-                <button className="modal__close"></button>
-                <img className="modal_photo__image" src="#" alt="" />
-                <figcaption className="modal_photo__caption"></figcaption>
-            </figure>
-        </section>
-        <section className="modal modal_delete">
+        <PopupWithImage />
+        {/* <section className="modal modal_delete">
             <div className="modal__container">
                 <button className="modal__close"></button>
                 <div className="modal__background modal__background_delete">
@@ -92,23 +107,6 @@ function App() {
                 </div>
             </div>
         </section> */}
-        <template className="grid__card-template">
-            <li className="grid__photos-item">
-                <div className="grid__photos-img-area">
-                    <button className="grid__photos-delete"></button>
-                    <div className="grid__photos-image grid__photos-image_sequoia"></div>
-                </div>
-                <div className="grid__photos-base">
-                    <h2 className="grid__photos-caption"></h2>
-                    <div className="grid__photos-like-container">
-                        <button className="grid__photos-liker"></button>
-                        <p className="grid__photos-like-counter"></p>
-                    </div>
-                </div>
-            </li>
-        </template>
-        </>
-  );
+        </main>
+    )
 }
-
-export default App;
