@@ -1,36 +1,19 @@
+/* eslint-disable no-unused-vars */
 /* eslint-disable jsx-a11y/heading-has-content */
 import React from 'react';
-// import logo from './logo.svg';
+import ReactDOM from 'react-dom';
+import '../index.css';
+import Header from './around_header/Header';
+import Footer from './around_footer/Footer';
+import Main from './around_main/Main';
 import './App.css';
 
 function App() {
   return (
-    // <div classNameName="App">
     <>
-      <header className="header">
-            <img className="header__logo" alt="Around the U.S. logo." src="./images/logoAroundUS.png" />
-        </header>
-        <main className="main">
-            <section className="profile">
-                <div className="profile__avatar-elements">
-                    <img className="profile__avatar" alt="User's profile." src="#" />
-                    <button className="profile__avatar-button" aria-label="Update profile photo"></button>
-                </div>
-                <div className="profile__info-set">
-                    <h1 className="profile__info profile__info_name"></h1>
-                    <p className="profile__info profile__info_description"></p>
-                </div>
-                <button className="profile__edit-button" aria-label="Edit profile"></button>
-                <button className="profile__add-button" aria-label="Add new image"></button>
-            </section>
-            <section className="grid">
-                <ul className="grid__photos">
-                </ul>
-            </section>
-        </main>
-        <footer className="footer">
-            <p className="footer__copyright">&copy; 2020 Around the U.S.</p>
-        </footer>
+        <Header />
+        <Main />
+        <Footer />
         <section className="modal modal_avatar">
             <div className="modal__container">
                 <button className="modal__close modal__close_avatar"></button>
@@ -125,7 +108,6 @@ function App() {
             </li>
         </template>
         </>
-   // </div>
   );
 }
 
