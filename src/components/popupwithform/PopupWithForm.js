@@ -5,7 +5,7 @@ export default function PopupWithForm(props) {
     <>
         <section className={`modal modal_${props.name}` + (props.isOpen ? ' modal_visible' : '')}>
             <div className="modal__container">
-                <button className={`modal__close modal__close_${props.name}`}></button>
+                <button className={`modal__close modal__close_${props.name}`} onClick={props.onClose}></button>
                 <div className={`modal__background modal__background_${props.name}`}>
                     <form action="#" className={`modal__form modal__form_${props.name}`} noValidate>
                         <h3 className="modal__title">{props.title}</h3>

@@ -24,7 +24,7 @@ export default function Main(props) {
                 <ul className="grid__photos">
                 </ul>
             </section>
-            <PopupWithForm name="avatar" title="Change profile picture" isOpen={props.isEditAvatarPopupOpen}>
+            <PopupWithForm name="avatar" title="Change profile picture" isOpen={props.isEditAvatarPopupOpen} onClose={props.onClose}>
                 <fieldset className="modal__fieldset">
                     <label>
                         <input className="modal__input modal__input_avatar-link" id="avatar-link" name="avatar"
@@ -34,7 +34,7 @@ export default function Main(props) {
                     <button className="modal__save-btn" type="submit">Save</button>
                 </fieldset>
             </PopupWithForm>
-            <PopupWithForm name="profile" title="Edit profile" isOpen={props.isEditProfilePopupOpen}>
+            <PopupWithForm name="profile" title="Edit profile" isOpen={props.isEditProfilePopupOpen} onClose={props.onClose}>
                 <fieldset className="modal__fieldset">
                     <label>
                         <input className="modal__input modal__input_name" name="name" type="text" placeholder="Name" minLength="2" maxLength="40" id="profile-name" />
@@ -47,7 +47,7 @@ export default function Main(props) {
                     <button className="modal__save-btn" type="submit">Save</button>
                 </fieldset>
             </PopupWithForm>
-            <PopupWithForm name="image" title="New place" isOpen={props.isAddPlacePopupOpen}>
+            <PopupWithForm name="image" title="New place" isOpen={props.isAddPlacePopupOpen} onClose={props.onClose}>
                 <fieldset className="modal__fieldset">
                     <label>
                         <input className="modal__input modal__input_caption" id="image-caption" name="card-caption"
@@ -62,7 +62,7 @@ export default function Main(props) {
                     <button className="modal__save-btn" type="submit">Create</button>
                 </fieldset>
             </PopupWithForm>
-            <PopupWithForm name="delete" title="Are you sure?" isOpen={false}>
+            <PopupWithForm name="delete" title="Are you sure?" isOpen={false} onClose={props.onClose}>
                 <button className="modal__save-btn" type="submit">Yes</button>
             </PopupWithForm>
             <PopupWithImage />

@@ -25,6 +25,12 @@ function App(props) {
         setIsAddPlacePopupOpen(true);
     }
 
+    function closeAllPopups() {
+        setIsAddPlacePopupOpen(false);
+        setIsEditProfilePopupOpen(false);
+        setIsEditAvatarPopupOpen(false);
+    }
+
   return (
     <>
         <Header />
@@ -32,6 +38,7 @@ function App(props) {
             onEditProfile={handleEditProfileClick}
             onAddPlace={handleAddPlaceClick}
             onEditAvatar={handleEditAvatarClick}
+            onClose={closeAllPopups}
             isEditProfilePopupOpen={isEditProfilePopupOpen}
             isAddPlacePopupOpen={isAddPlacePopupOpen}
             isEditAvatarPopupOpen={isEditAvatarPopupOpen}
