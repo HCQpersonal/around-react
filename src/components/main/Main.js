@@ -1,21 +1,36 @@
 /* eslint-disable jsx-a11y/heading-has-content */
 import React from 'react';
+import { api } from '../../utils/Api';
 import PopupWithForm from '../popupwithform/PopupWithForm';
 import PopupWithImage from '../popupwithimage/PopupWithImage';
 
 export default function Main(props) {
-    console.log(props)
+    const [userName, setUserName] = React.useState("");
+    const [userDescription, setUserDescription] = React.useState("");
+    const [userAvatar, setUserAvatar] = React.useState("");
+
+    React.useEffect(() => {
+        api.getUserInfo()
+          .then((res) => {
+            setUserName(res.name);
+            setUserDescription(res.about);
+            setUserAvatar(res.avatar);
+          })
+          .catch((err) => {
+            console.log(err);
+          });
+      })
 
     return(
         <main className="main">
             <section className="profile">
                 <div className="profile__avatar-elements">
-                    <img className="profile__avatar" alt="User's profile." src="#" />
+                    <img className="profile__avatar" alt="User's profile." src={userAvatar} />
                     <button className="profile__avatar-button" aria-label="Update profile photo" onClick={props.onEditAvatar}></button>
                 </div>
                 <div className="profile__info-set">
-                    <h1 className="profile__info profile__info_name"></h1>
-                    <p className="profile__info profile__info_description"></p>
+                    <h1 className="profile__info profile__info_name">{userName}</h1>
+                    <p className="profile__info profile__info_description">{userDescription}</p>
                 </div>
                 <button className="profile__edit-button" aria-label="Edit profile" onClick={props.onEditProfile}></button>
                 <button className="profile__add-button" aria-label="Add new image" onClick={props.onAddPlace}></button>
