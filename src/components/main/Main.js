@@ -4,39 +4,27 @@ import PopupWithForm from '../popupwithform/PopupWithForm';
 import PopupWithImage from '../popupwithimage/PopupWithImage';
 
 export default function Main(props) {
-// const []
+    console.log(props)
 
-    function handleEditAvatarClick() {
-        document.querySelector('.modal_avatar').classList.add('modal_visible');
-    }
-
-    function handleEditProfileClick() {
-        document.querySelector('.modal_profile').classList.add('modal_visible');
-    }
-
-    function handleAddPlaceClick() {
-        document.querySelector('.modal_image').classList.add('modal_visible');
-    }
-    
     return(
         <main className="main">
             <section className="profile">
                 <div className="profile__avatar-elements">
                     <img className="profile__avatar" alt="User's profile." src="#" />
-                    <button className="profile__avatar-button" aria-label="Update profile photo" onClick={handleEditAvatarClick}></button>
+                    <button className="profile__avatar-button" aria-label="Update profile photo" onClick={props.onEditAvatar}></button>
                 </div>
                 <div className="profile__info-set">
                     <h1 className="profile__info profile__info_name"></h1>
                     <p className="profile__info profile__info_description"></p>
                 </div>
-                <button className="profile__edit-button" aria-label="Edit profile" onClick={handleEditProfileClick}></button>
-                <button className="profile__add-button" aria-label="Add new image" onClick={handleAddPlaceClick}></button>
+                <button className="profile__edit-button" aria-label="Edit profile" onClick={props.onEditProfile}></button>
+                <button className="profile__add-button" aria-label="Add new image" onClick={props.onAddPlace}></button>
             </section>
             <section className="grid">
                 <ul className="grid__photos">
                 </ul>
             </section>
-            <PopupWithForm name="avatar" title="Change profile picture">
+            <PopupWithForm name="avatar" title="Change profile picture" isOpen={props.isEditAvatarPopupOpen}>
                 <fieldset className="modal__fieldset">
                     <label>
                         <input className="modal__input modal__input_avatar-link" id="avatar-link" name="avatar"
@@ -46,7 +34,7 @@ export default function Main(props) {
                     <button className="modal__save-btn" type="submit">Save</button>
                 </fieldset>
             </PopupWithForm>
-            <PopupWithForm name="profile" title="Edit profile">
+            <PopupWithForm name="profile" title="Edit profile" isOpen={props.isEditProfilePopupOpen}>
                 <fieldset className="modal__fieldset">
                     <label>
                         <input className="modal__input modal__input_name" name="name" type="text" placeholder="Name" minLength="2" maxLength="40" id="profile-name" />
@@ -59,7 +47,7 @@ export default function Main(props) {
                     <button className="modal__save-btn" type="submit">Save</button>
                 </fieldset>
             </PopupWithForm>
-            <PopupWithForm name="image" title="New place">
+            <PopupWithForm name="image" title="New place" isOpen={props.isAddPlacePopupOpen}>
                 <fieldset className="modal__fieldset">
                     <label>
                         <input className="modal__input modal__input_caption" id="image-caption" name="card-caption"
@@ -74,7 +62,7 @@ export default function Main(props) {
                     <button className="modal__save-btn" type="submit">Create</button>
                 </fieldset>
             </PopupWithForm>
-            <PopupWithForm name="delete" title="Are you sure?">
+            <PopupWithForm name="delete" title="Are you sure?" isOpen={false}>
                 <button className="modal__save-btn" type="submit">Yes</button>
             </PopupWithForm>
             <PopupWithImage />
