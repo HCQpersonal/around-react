@@ -1,5 +1,6 @@
 /* eslint-disable jsx-a11y/heading-has-content */
 import React from 'react';
+import PopupWithForm from '../popupwithform/PopupWithForm';
 import PopupWithImage from '../popupwithimage/PopupWithImage';
 
 export default function Main(props) {
@@ -35,78 +36,48 @@ export default function Main(props) {
                 <ul className="grid__photos">
                 </ul>
             </section>
-            <section className="modal modal_avatar">
-            <div className="modal__container">
-                <button className="modal__close modal__close_avatar"></button>
-                <div className="modal__background modal__background_avatar">
-                    <form action="#" className="modal__form modal__form_avatar" noValidate>
-                    <h3 className="modal__title">Change profile picture</h3>
-                        <fieldset className="modal__fieldset">
-                            <label>
-                                <input className="modal__input modal__input_avatar-link" id="avatar-link" name="avatar"
-                                    type="url" placeholder="Profile photo link" value="" required />
-                                <span className="modal__input_error" id="avatar-link-error"></span>
-                            </label>
-                            <button className="modal__save-btn" type="submit">Save</button>
-                        </fieldset>
-                    </form>
-                </div>
-            </div>
-        </section>
-        <section className="modal modal_profile">
-            <div className="modal__container">
-                <button className="modal__close modal__close_profile"></button>
-                <div className="modal__background">
-                    <form action="#" className="modal__form modal__form_profile" noValidate>
-                        <h3 className="modal__title">Edit profile</h3>
-                        <fieldset className="modal__fieldset">
-                            <label>
-                                <input className="modal__input modal__input_name" name="name" type="text" placeholder="Name" minLength="2" maxLength="40" id="profile-name" />
-                                <span className="modal__input_error" id="profile-name-error"></span>
-                            </label>
-                            <label>
-                                <input className="modal__input modal__input_description" name="job" type="text" placeholder="About me" minLength="2" maxLength="200" id="profile-description" />
-                                <span className="modal__input_error" id="profile-description-error"></span>
-                            </label>
-                            <button className="modal__save-btn" type="submit">Save</button>
-                        </fieldset>
-                    </form>
-                </div>
-            </div>
-        </section>
-        <section className="modal modal_image">
-            <div className="modal__container">
-                <button className="modal__close modal__close_image"></button>
-                <div className="modal__background">
-                    <form action="#" className="modal__form modal__form_image" noValidate>
-                    <h3 className="modal__title">New place</h3>
-                        <fieldset className="modal__fieldset">
-                            <label>
-                                <input className="modal__input modal__input_caption" id="image-caption" name="card-caption"
-                                    type="text" placeholder="Title" value="" minLength="1" maxLength="100" required />
-                                <span className="modal__input_error" id="image-caption-error"></span>
-                            </label>
-                            <label>
-                                <input className="modal__input modal__input_image-link" id="image-link" name="card-link"
-                                    type="url" placeholder="Image link" value="" required />
-                                <span className="modal__input_error" id="image-link-error"></span>
-                            </label>
-                            <button className="modal__save-btn" type="submit">Create</button>
-                        </fieldset>
-                    </form>
-                </div>
-            </div>
-        </section>
-        <PopupWithImage />
-        {/* <section className="modal modal_delete">
-            <div className="modal__container">
-                <button className="modal__close"></button>
-                <div className="modal__background modal__background_delete">
-                    <h3 className="modal__title">Are you sure?</h3> 
-                    <button className="modal__save-btn" type="submit">Yes</button>
-                </div>
-            </div>
-        </section> */}
+            <PopupWithForm name="avatar" title="Change profile picture">
+                <fieldset className="modal__fieldset">
+                    <label>
+                        <input className="modal__input modal__input_avatar-link" id="avatar-link" name="avatar"
+                            type="url" placeholder="Profile photo link" value="" required />
+                        <span className="modal__input_error" id="avatar-link-error"></span>
+                    </label>
+                    <button className="modal__save-btn" type="submit">Save</button>
+                </fieldset>
+            </PopupWithForm>
+            <PopupWithForm name="profile" title="Edit profile">
+                <fieldset className="modal__fieldset">
+                    <label>
+                        <input className="modal__input modal__input_name" name="name" type="text" placeholder="Name" minLength="2" maxLength="40" id="profile-name" />
+                        <span className="modal__input_error" id="profile-name-error"></span>
+                    </label>
+                    <label>
+                        <input className="modal__input modal__input_description" name="job" type="text" placeholder="About me" minLength="2" maxLength="200" id="profile-description" />
+                        <span className="modal__input_error" id="profile-description-error"></span>
+                    </label>
+                    <button className="modal__save-btn" type="submit">Save</button>
+                </fieldset>
+            </PopupWithForm>
+            <PopupWithForm name="image" title="New place">
+                <fieldset className="modal__fieldset">
+                    <label>
+                        <input className="modal__input modal__input_caption" id="image-caption" name="card-caption"
+                            type="text" placeholder="Title" value="" minLength="1" maxLength="100" required />
+                        <span className="modal__input_error" id="image-caption-error"></span>
+                    </label>
+                    <label>
+                        <input className="modal__input modal__input_image-link" id="image-link" name="card-link"
+                            type="url" placeholder="Image link" value="" required />
+                        <span className="modal__input_error" id="image-link-error"></span>
+                    </label>
+                    <button className="modal__save-btn" type="submit">Create</button>
+                </fieldset>
+            </PopupWithForm>
+            <PopupWithForm name="delete" title="Are you sure?">
+                <button className="modal__save-btn" type="submit">Yes</button>
+            </PopupWithForm>
+            <PopupWithImage />
         </main>
     )
 }
