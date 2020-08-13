@@ -97,11 +97,11 @@ export default function Main(props) {
             <PopupWithForm name="delete" title="Are you sure?" isOpen={false} onClose={props.onClose}>
                 <button className="modal__save-btn" type="submit">Yes</button>
             </PopupWithForm>
-            <PopupWithImage onClose={props.onClose} card={props.cards} />
+            <PopupWithImage onClose={props.onClose} card={props.selectedCard} />
             <div className="grid__card-template">
                 <ul className="grid__photos">
                     {cards.map((card) => (
-                        <Card key={card._id} card={card} onCardClick={props.onCardClick} />
+                        <Card key={card._id} card={card} onClick={props.onClick} />
                     ))}
                 </ul>
             </div>

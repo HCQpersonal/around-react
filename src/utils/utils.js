@@ -1,5 +1,3 @@
-import PopupWithImage from './PopupWithImage.js';
-
 // Popup helpers
 export const popUp = document.querySelector('.card-popup');
 export const overlay = document.querySelector('.overlay');
