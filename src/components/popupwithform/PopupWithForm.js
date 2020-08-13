@@ -9,6 +9,7 @@ export default function PopupWithForm(props) {
                 <div className={`modal__background modal__background_${props.name}`}>
                     <form action="#" className={`modal__form modal__form_${props.name}`} noValidate>
                         <h3 className="modal__title">{props.title}</h3>
+                        {/* <Input placeholder={inputPlaceholder} onChange={inputChangeHandler}> */}
                         {props.children}
                     </form>
                 </div>

@@ -4,6 +4,8 @@ class Api {
         this.headers = headers;
     }
 
+// owner._id = : "c64138ece4ac2d1c50e9ce31"
+
     getCardList() {
         return fetch(`${this.server}/cards`, {
             headers: this.headers,
