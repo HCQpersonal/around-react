@@ -2,6 +2,7 @@ import React from 'react';
 import Header from './header/Header';
 import Footer from './footer/Footer';
 import Main from './main/Main';
+import './../index.css';
 
 export default function App(props) {
   const [isEditAvatarPopupOpen, setIsEditAvatarPopupOpen] = React.useState(false);
@@ -33,14 +34,13 @@ export default function App(props) {
     }
 
   return (
-    <>
+    <div className="page__container">
         <Header />
         <Main 
             onEditProfile={handleEditProfileClick}
             onAddPlace={handleAddPlaceClick}
             onEditAvatar={handleEditAvatarClick}
             onCardClick={handleCardClick}
-
             onClosePopups={closeAllPopups}
             isEditProfilePopupOpen={isEditProfilePopupOpen}
             isAddPlacePopupOpen={isAddPlacePopupOpen}
@@ -48,6 +48,6 @@ export default function App(props) {
             selectedCard={selectedCard}
         />
         <Footer />
-    </>
+    </div>
   );
 }
