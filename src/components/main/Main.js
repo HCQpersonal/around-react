@@ -61,7 +61,7 @@ export default function Main(props) {
                     ))}
                 </ul>
             </div>
-            <PopupWithForm name="avatar" title="Change profile picture" isOpen={props.isEditAvatarPopupOpen} onClose={props.onClosePopups}>
+            <PopupWithForm name="avatar" title="Change profile picture" isOpen={props.isEditAvatarPopupOpen} onClose={props.onClosePopups} text="Save">
                 <fieldset className="modal__fieldset">
                     <label>
                         {/* <Input placeholder={inputPlaceholder} onChange={inputChangeHandler}> */}
@@ -69,10 +69,9 @@ export default function Main(props) {
                             type="url" placeholder="Profile photo link" defaultValue="" required />
                         <span className="modal__input_error" id="avatar-link-error"></span>
                     </label>
-                    <button className="modal__save-btn" type="submit">Save</button>
                 </fieldset>
             </PopupWithForm>
-            <PopupWithForm name="profile" title="Edit profile" isOpen={props.isEditProfilePopupOpen} onClose={props.onClosePopups}>
+            <PopupWithForm name="profile" title="Edit profile" isOpen={props.isEditProfilePopupOpen} onClose={props.onClosePopups} text="Save">
                 <fieldset className="modal__fieldset">
                     <label>
                         <input className="modal__input modal__input_name" name="name" type="text" placeholder="Name" minLength="2" maxLength="40" id="profile-name" />
@@ -82,10 +81,9 @@ export default function Main(props) {
                         <input className="modal__input modal__input_description" name="job" type="text" placeholder="About me" minLength="2" maxLength="200" id="profile-description" />
                         <span className="modal__input_error" id="profile-description-error"></span>
                     </label>
-                    <button className="modal__save-btn" type="submit">Save</button>
                 </fieldset>
             </PopupWithForm>
-            <PopupWithForm name="image" title="New place" isOpen={props.isAddPlacePopupOpen} onClose={props.onClosePopups}>
+            <PopupWithForm name="image" title="New place" isOpen={props.isAddPlacePopupOpen} onClose={props.onClosePopups} text="Create">
                 <fieldset className="modal__fieldset">
                     <label>
                         <input className="modal__input modal__input_caption" id="image-caption" name="card-caption"
@@ -97,11 +95,9 @@ export default function Main(props) {
                             type="url" placeholder="Image link" defaultValue="" required />
                         <span className="modal__input_error" id="image-link-error"></span>
                     </label>
-                    <button className="modal__save-btn" type="submit">Create</button>
                 </fieldset>
             </PopupWithForm>
-            <PopupWithForm name="delete" title="Are you sure?" isOpen={false} onClose={props.onClosePopups}>
-                <button className="modal__save-btn" type="submit">Yes</button>
+            <PopupWithForm name="delete" title="Are you sure?" isOpen={false} onClose={props.onClosePopups} text="Yes">
             </PopupWithForm>
             <PopupWithImage onClose={props.onClosePopups} card={props.selectedCard} />
         </>

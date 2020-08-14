@@ -11,6 +11,7 @@ export default function PopupWithForm(props) {
                         <h3 className="modal__title">{props.title}</h3>
                         {/* <Input placeholder={inputPlaceholder} onChange={inputChangeHandler}> */}
                         {props.children}
+                        <button className="modal__save-btn" type="submit">{props.text}</button> 
                     </form>
                 </div>
             </div>
