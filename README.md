@@ -1,3 +1,30 @@
+# Project 5, Sprint 10: Around The U.S. + World
+
+This project refactors [the original](https://hcqpersonal.github.io/web_project_4/dist) to utilize React.
+
+**Fresh Tech**
+React
+
+**Original Stack**
+HTML | CSS | JavaScript 🍦
+
+**Description and updates plan**
+The current version is responsive to desktop and mobile, gets profile information and images via API, and has functioning popups.
+
+**Next up**
+To get to parity with my initial build, I will be porting over the ability to post profile updates, add/like/delete images, and show like counts from classmates.
+
+**Figma**
+* [Link to Figma file V1](https://www.figma.com/file/xM9rNsdK4iNcFJmDZho3Aw/Sprint-3%3A-From-Portland-to-Portland-%2F-desktop-%2B-mobile?node-id=500%3A0)
+* [Link to Figma file V2](https://www.figma.com/file/avLHzpJw2dmU2NaDATZ6CX/Sprint-5%3A-Around-The-U.S.-%2F-desktop-%2B-mobile?node-id=187%3A446)
+* [Link to Figma file V3](https://www.figma.com/file/KUbYgXnYElfzxCbcrlsOCE/Sprint-6%3A-Around-The-U.S.?node-id=0%3A1)
+
+**Images**
+All images are pulled from a shared server.
+
+
+
+----------------------------------------------------------------------------------------------------------------------------
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
