@@ -9,9 +9,9 @@ export default function Card(props) {
                 <div className="grid__photos-image grid__photos-image_sequoia"
                     style={{ backgroundImage: `url(${props.card.link})` }}
                     onClick={() => {
-                        props.onClick(props.card);
+                        props.onCardClick(props.card);
                     }}>
-            </div>
+                </div>
             </div>
             <div className="grid__photos-base">
                 <h2 className="grid__photos-caption">{props.card.name}</h2>

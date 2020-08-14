@@ -1,4 +1,3 @@
-/* eslint-disable jsx-a11y/heading-has-content */
 import React from 'react';
 import { api } from '../../utils/Api';
 import Card from '../card/Card';
@@ -55,7 +54,14 @@ export default function Main(props) {
                 <ul className="grid__photos">
                 </ul>
             </section>
-            <PopupWithForm name="avatar" title="Change profile picture" isOpen={props.isEditAvatarPopupOpen} onClose={props.onClose}>
+            <div className="grid">
+                <ul className="grid__photos">
+                    {cards.map((card) => (
+                        <Card key={card._id} card={card} onCardClick={props.onCardClick} />
+                    ))}
+                </ul>
+            </div>
+            <PopupWithForm name="avatar" title="Change profile picture" isOpen={props.isEditAvatarPopupOpen} onClose={props.onClosePopups}>
                 <fieldset className="modal__fieldset">
                     <label>
                         {/* <Input placeholder={inputPlaceholder} onChange={inputChangeHandler}> */}
@@ -66,7 +72,7 @@ export default function Main(props) {
                     <button className="modal__save-btn" type="submit">Save</button>
                 </fieldset>
             </PopupWithForm>
-            <PopupWithForm name="profile" title="Edit profile" isOpen={props.isEditProfilePopupOpen} onClose={props.onClose}>
+            <PopupWithForm name="profile" title="Edit profile" isOpen={props.isEditProfilePopupOpen} onClose={props.onClosePopups}>
                 <fieldset className="modal__fieldset">
                     <label>
                         <input className="modal__input modal__input_name" name="name" type="text" placeholder="Name" minLength="2" maxLength="40" id="profile-name" />
@@ -79,7 +85,7 @@ export default function Main(props) {
                     <button className="modal__save-btn" type="submit">Save</button>
                 </fieldset>
             </PopupWithForm>
-            <PopupWithForm name="image" title="New place" isOpen={props.isAddPlacePopupOpen} onClose={props.onClose}>
+            <PopupWithForm name="image" title="New place" isOpen={props.isAddPlacePopupOpen} onClose={props.onClosePopups}>
                 <fieldset className="modal__fieldset">
                     <label>
                         <input className="modal__input modal__input_caption" id="image-caption" name="card-caption"
@@ -94,17 +100,10 @@ export default function Main(props) {
                     <button className="modal__save-btn" type="submit">Create</button>
                 </fieldset>
             </PopupWithForm>
-            <PopupWithForm name="delete" title="Are you sure?" isOpen={false} onClose={props.onClose}>
+            <PopupWithForm name="delete" title="Are you sure?" isOpen={false} onClose={props.onClosePopups}>
                 <button className="modal__save-btn" type="submit">Yes</button>
             </PopupWithForm>
-            <PopupWithImage onClose={props.onClose} card={props.selectedCard} />
-            <div className="grid__card-template">
-                <ul className="grid__photos">
-                    {cards.map((card) => (
-                        <Card key={card._id} card={card} onClick={props.onClick} />
-                    ))}
-                </ul>
-            </div>
+            <PopupWithImage onClose={props.onClosePopups} card={props.selectedCard} />
         </>
-        )
+        );
     }

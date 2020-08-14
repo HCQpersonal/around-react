@@ -1,12 +1,9 @@
 import React from 'react';
-import '../index.css';
 import Header from './header/Header';
 import Footer from './footer/Footer';
 import Main from './main/Main';
 
-import './App.css';
-
-function App(props) {
+export default function App(props) {
   const [isEditAvatarPopupOpen, setIsEditAvatarPopupOpen] = React.useState(false);
   const [isEditProfilePopupOpen, setIsEditProfilePopupOpen] = React.useState(false);
   const [isAddPlacePopupOpen, setIsAddPlacePopupOpen] = React.useState(false);
@@ -42,16 +39,15 @@ function App(props) {
             onEditProfile={handleEditProfileClick}
             onAddPlace={handleAddPlaceClick}
             onEditAvatar={handleEditAvatarClick}
-            onClose={closeAllPopups}
+            onCardClick={handleCardClick}
+
+            onClosePopups={closeAllPopups}
             isEditProfilePopupOpen={isEditProfilePopupOpen}
             isAddPlacePopupOpen={isAddPlacePopupOpen}
             isEditAvatarPopupOpen={isEditAvatarPopupOpen}
-            onClick={handleCardClick}
             selectedCard={selectedCard}
         />
         <Footer />
-        </>
+    </>
   );
 }
-
-export default App;
