@@ -1,6 +1,12 @@
 import React from 'react';
 
 export default function Card(props) {
+    // const isOwn = card.owner._id === currentUser._id;
+
+    // const cardDeleteButtonClassName = (
+    // `card__delete-button ${isOwn ? 'card__delete-button_visible' : 'card__delete-button_hidden'}`
+    // );
+
     return(        
     <>
         <li className="grid__photos-item">

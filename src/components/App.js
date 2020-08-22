@@ -1,4 +1,6 @@
-import React from 'react';
+import React, { cloneElement } from 'react';
+import { api } from '../utils/Api';
+import { CurrentUserContext } from '../contexts/CurrentUserContext';
 import Header from './header/Header';
 import Footer from './footer/Footer';
 import Main from './main/Main';
@@ -9,6 +11,9 @@ export default function App(props) {
   const [isEditProfilePopupOpen, setIsEditProfilePopupOpen] = React.useState(false);
   const [isAddPlacePopupOpen, setIsAddPlacePopupOpen] = React.useState(false);
   const [selectedCard, setSelectedCard] = React.useState(null);
+  const [isCurrentUser, setCurrentUser] = React.useState('');
+
+  const currentUser = React.useContext(CurrentUserContext);
 
     function handleEditAvatarClick() {
         setIsEditAvatarPopupOpen(true);
@@ -24,6 +29,7 @@ export default function App(props) {
 
     function handleCardClick(card) {
         setSelectedCard(card);
+        console.log(card);
     }
 
     function closeAllPopups() {
@@ -33,21 +39,33 @@ export default function App(props) {
         setSelectedCard(null);
     }
 
+    
+    React.useEffect(() => {
+        api.getUserInfo()
+          .then((res) => {
+            setCurrentUser(res.owner._id);
+          }).catch((err) => {
+            console.log(err);
+          });
+      }, [isCurrentUser]);
+
   return (
-    <div className="page__container">
-        <Header />
-        <Main 
-            onEditProfile={handleEditProfileClick}
-            onAddPlace={handleAddPlaceClick}
-            onEditAvatar={handleEditAvatarClick}
-            onCardClick={handleCardClick}
-            onClosePopups={closeAllPopups}
-            isEditProfilePopupOpen={isEditProfilePopupOpen}
-            isAddPlacePopupOpen={isAddPlacePopupOpen}
-            isEditAvatarPopupOpen={isEditAvatarPopupOpen}
-            selectedCard={selectedCard}
-        />
-        <Footer />
-    </div>
+    <CurrentUserContext.Provider value={currentUser}>
+        <div className="page__container">
+            <Header />
+            <Main 
+                onEditProfile={handleEditProfileClick}
+                onAddPlace={handleAddPlaceClick}
+                onEditAvatar={handleEditAvatarClick}
+                onCardClick={handleCardClick}
+                onClosePopups={closeAllPopups}
+                isEditProfilePopupOpen={isEditProfilePopupOpen}
+                isAddPlacePopupOpen={isAddPlacePopupOpen}
+                isEditAvatarPopupOpen={isEditAvatarPopupOpen}
+                selectedCard={selectedCard}
+            />            
+            <Footer />
+        </div>
+    </CurrentUserContext.Provider>
   );
 }
