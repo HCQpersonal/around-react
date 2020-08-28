@@ -1,17 +1,32 @@
 import React from 'react';
+import { CurrentUserContext } from '../../contexts/CurrentUserContext';
 
 export default function Card(props) {
-    // const isOwn = card.owner._id === currentUser._id;
+    const currentUser = React.useContext(CurrentUserContext);
 
-    // const cardDeleteButtonClassName = (
-    // `card__delete-button ${isOwn ? 'card__delete-button_visible' : 'card__delete-button_hidden'}`
-    // );
+    const isOwn = currentUser && (props.card.owner._id === currentUser._id);
+
+    const cardDeleteButtonClassName = (
+        `grid__photos-delete ${isOwn ? 'grid__photos-delete' : 'grid__photos-delete_hidden'}`
+    );
+
+    const isLiked = props.card.likes.some(i => i._id === currentUser._id);
+
+    const cardLikeButtonClassName = (
+        `grid__photos-liker ${isLiked && 'grid__photos-liker_on'}`
+    );
+
 
     return(        
     <>
         <li className="grid__photos-item">
+        {/* key={props.card._id} */}
             <div className="grid__photos-img-area">
-                <button className="grid__photos-delete"></button>
+                {/* <button className="grid__photos-delete"></button> */}
+                <button className={cardDeleteButtonClassName} onClick={() => {
+                    props.onCardDelete(props.card);
+                }}>
+                </button>
                 <div className="grid__photos-image grid__photos-image_sequoia"
                     style={{ backgroundImage: `url(${props.card.link})` }}
                     onClick={() => {
@@ -22,7 +37,9 @@ export default function Card(props) {
             <div className="grid__photos-base">
                 <h2 className="grid__photos-caption">{props.card.name}</h2>
                 <div className="grid__photos-like-container">
-                    <button className="grid__photos-liker"></button>
+                    <button className={cardLikeButtonClassName} onClick={() => {
+                        props.onCardLike(props.card)
+                    }}></button>
                     <p className="grid__photos-like-counter"></p>
                 </div>
             </div>

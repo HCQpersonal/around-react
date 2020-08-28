@@ -20,3 +20,7 @@
 .grid__photos-delete:focus {
     outline: none;
 }
+
+.grid__photos-delete_hidden {
+    display: none;
+}
