@@ -1,42 +1,14 @@
 import React from 'react';
-import { api } from '../../utils/Api';
 import Card from '../card/Card';
 import { CurrentUserContext } from '../../contexts/CurrentUserContext';
-import PopupWithForm from '../popupwithform/PopupWithForm';
+import { PopupWithForm } from '../popupwithform/PopupWithForm';
 import PopupWithImage from '../popupwithimage/PopupWithImage';
 
 export default function Main(props) {
-    // const [searchText, setSearchText] = React.useState('');
-    // const [isLoading, setIsLoading] = React.useState(false);
-
-    const [cards, setCards] = React.useState([]);
-
     const currentUser = React.useContext(CurrentUserContext);
 
-    function handleCardLike(card) {
-        const isLiked = card.likes.some((i) => i._id === currentUser._id);
-        api.toggleLike(card._id, isLiked).then((newCard) => {
-          const newCards = cards.map((c) => (c._id === card._id ? newCard : c));
-          setCards(newCards);
-        });
-    }
-
-    function handleCardDelete(card) {
-        api.deleteCard(card._id).then(() => {
-            setCards(cards.filter((c) => c._id !== card._id));
-        });
-    }
-
-    React.useEffect(() => {
-        // setIsLoading(true);
-        api.getCardList()
-            .then((res) => {
-                setCards((cards) => [...cards, ...res]);
-            }).catch((err) => {
-                console.log(err);
-            });
-
-        }, []);
+    // const [searchText, setSearchText] = React.useState('');
+    // const [isLoading, setIsLoading] = React.useState(false);
 
     return(
         <>
@@ -58,28 +30,12 @@ export default function Main(props) {
             </section>
             <div className="grid">
                 <ul className="grid__photos">
-                    {cards.map((card) => (
-                        <Card key={card._id} card={card} onCardClick={props.onCardClick} onCardLike={handleCardLike} onCardDelete={handleCardDelete} />
+                    {props.cards.map((card) => (
+                        <Card key={card._id} card={card} onCardClick={props.onCardClick} onCardLike={props.onCardLike} onCardDelete={props.onCardDelete} />
                     ))}
                 </ul>
             </div>
-
-            <PopupWithForm name="image" title="New place" isOpen={props.isAddPlacePopupOpen} onClose={props.onClosePopups} text="Create">
-                <fieldset className="modal__fieldset">
-                    <label>
-                        <input className="modal__input modal__input_caption" id="image-caption" name="card-caption"
-                            type="text" placeholder="Title" defaultValue="" minLength="1" maxLength="100" required />
-                        <span className="modal__input_error" id="image-caption-error"></span>
-                    </label>
-                    <label>
-                        <input className="modal__input modal__input_image-link" id="image-link" name="card-link"
-                            type="url" placeholder="Image link" defaultValue="" required />
-                        <span className="modal__input_error" id="image-link-error"></span>
-                    </label>
-                </fieldset>
-            </PopupWithForm>
-            <PopupWithForm name="delete" title="Are you sure?" isOpen={false} onClose={props.onClosePopups} text="Yes">
-            </PopupWithForm>
+            <PopupWithForm name="delete" title="Are you sure?" isOpen={false} onClose={props.onClosePopups} text="Yes" />
             <PopupWithImage onClose={props.onClosePopups} card={props.selectedCard} />
         </>
         );

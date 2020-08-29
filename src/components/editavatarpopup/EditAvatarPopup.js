@@ -1,5 +1,5 @@
 import React from 'react';
-import PopupWithForm from '../popupwithform/PopupWithForm';
+import { PopupWithForm } from '../popupwithform/PopupWithForm';
 
 export function EditAvatarPopup(props) {
     const avatarRef = React.useRef('');
@@ -17,8 +17,8 @@ export function EditAvatarPopup(props) {
             <fieldset className="modal__fieldset">
                 <label>
                     {/* <Input placeholder={inputPlaceholder} onChange={inputChangeHandler}> */}
-                    <input className="modal__input modal__input_avatar-link" id="avatar-link" name="avatar" value="avatar"
-                        type="url" placeholder="Profile photo link" defaultValue="" required ref={avatarRef} />
+                    <input className="modal__input modal__input_avatar-link" id="avatar-link" name="avatar"
+                        type="url" placeholder="Profile photo link" defaultValue=""  ref={avatarRef} required />
                     <span className="modal__input_error" id="avatar-link-error"></span>
                 </label>
             </fieldset>

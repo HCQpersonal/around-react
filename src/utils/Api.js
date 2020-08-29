@@ -24,13 +24,13 @@ class Api {
         return Promise.all([this.getCardList(), this.getUserInfo()]);
     }
 
-    addCard({ name, link }) {
+    addCard({ caption, imageUrl }) {
         return fetch(`${this.server}/cards`, {
             method: 'POST',
             headers: this.headers,
             body: JSON.stringify({
-                name,
-                link,
+                name: caption,
+                link: imageUrl,
             }),
         }).then(res => res.ok ? res.json() : Promise.reject('Error: ' + res.status))
         .catch(console.log('Problem fetching addCard API results'));

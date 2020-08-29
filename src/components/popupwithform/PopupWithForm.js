@@ -1,6 +1,6 @@
 import React from 'react';
 
-export default function PopupWithForm(props) {
+export function PopupWithForm(props) {
     return(
     <>
         <section className={`modal modal_${props.name}` + (props.isOpen ? ' modal_visible' : '')}>
