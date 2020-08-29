@@ -63,16 +63,7 @@ export default function Main(props) {
                     ))}
                 </ul>
             </div>
-            <PopupWithForm name="avatar" title="Change profile picture" isOpen={props.isEditAvatarPopupOpen} onClose={props.onClosePopups} text="Save">
-                <fieldset className="modal__fieldset">
-                    <label>
-                        {/* <Input placeholder={inputPlaceholder} onChange={inputChangeHandler}> */}
-                        <input className="modal__input modal__input_avatar-link" id="avatar-link" name="avatar"
-                            type="url" placeholder="Profile photo link" defaultValue="" required />
-                        <span className="modal__input_error" id="avatar-link-error"></span>
-                    </label>
-                </fieldset>
-            </PopupWithForm>
+
             <PopupWithForm name="image" title="New place" isOpen={props.isAddPlacePopupOpen} onClose={props.onClosePopups} text="Create">
                 <fieldset className="modal__fieldset">
                     <label>

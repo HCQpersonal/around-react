@@ -1,6 +1,7 @@
 import React from 'react';
 import { api } from '../utils/Api';
 import { CurrentUserContext } from '../contexts/CurrentUserContext';
+import { EditAvatarPopup } from './editavatarpopup/EditAvatarPopup';
 import { EditProfilePopup } from './editprofilepopup/EditProfilePopup';
 import Footer from './footer/Footer';
 import Header from './header/Header';
@@ -41,6 +42,13 @@ export default function App(props) {
         closeAllPopups();
       }
 
+    function handleUpdateAvatar({ avatar }) {
+        api.setAvatar(avatar.current.value).then((data) => {
+            setCurrentUser(data);
+          });
+        closeAllPopups();
+    }
+
     function closeAllPopups() {
         setIsAddPlacePopupOpen(false);
         setIsEditProfilePopupOpen(false);
@@ -79,6 +87,10 @@ export default function App(props) {
                     onClose={closeAllPopups}
                     onUpdateUser={handleUpdateUserInfo}
                 />           
+                <EditAvatarPopup
+                    isOpen={isEditAvatarPopupOpen}
+                    onClose={closeAllPopups}
+                    onUpdateAvatar={handleUpdateAvatar} />
                 <Footer />
             </div>
         </CurrentUserContext.Provider>
