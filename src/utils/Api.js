@@ -57,7 +57,7 @@ class Api {
 
     updateUserInfo({ name, about }) {
         return fetch(`${this.server}/users/me/`, {
-            method: "PATCH",
+            method: 'PATCH',
             headers: this.headers,
             body: JSON.stringify({
                 name,
@@ -70,12 +70,12 @@ class Api {
         }).catch(console.log);
     }
 
-    setUserAvatar({ avatar }) {
-        return fetch(this.server + '/users/me/avatar/', {
+    setUserAvatar(res) {
+        return fetch(`${this.server}/users/me/avatar/`, {
             method: 'PATCH',
             headers: this.headers,
             body: JSON.stringify({
-                avatar: avatar,
+                avatar: res,
             }),
         }).then((res) => {
             if (res.ok) {
@@ -89,6 +89,6 @@ export const api = new Api({
     server: "https://around.nomoreparties.co/v1/group-2",
     headers: {
         authorization: "7c532e9d-132b-43e0-b1d4-55c21c0fd902",
-        "Content-Type": "application/json"
+        "Content-Type": "application/json",
     }
 });

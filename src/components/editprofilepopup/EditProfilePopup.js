@@ -32,11 +32,11 @@ export function EditProfilePopup(props) {
         <PopupWithForm name="profile" title="Edit profile" isOpen={props.isOpen} onClose={props.onClose} onSubmit={handleSubmit} text="Save">
             <fieldset className="modal__fieldset">
                 <label>
-                    <input className="modal__input modal__input_name" name="name" type="text" placeholder="Name" minLength="2" maxLength="40" id="profile-name" value={name} onChange={handleNameUpdate} />
+                    <input className="modal__input modal__input_name" name="name" type="text" placeholder="Name" minLength="2" maxLength="40" id="profile-name" value={name || ""} onChange={handleNameUpdate} />
                     <span className="modal__input_error" id="profile-name-error"></span>
                 </label>
                 <label>
-                    <input className="modal__input modal__input_description" name="about" type="text" placeholder="About me" minLength="2" maxLength="200" id="profile-description" value={description} onChange={handleDescriptionUpdate} />
+                    <input className="modal__input modal__input_description" name="about" type="text" placeholder="About me" minLength="2" maxLength="200" id="profile-description" value={description || ""} onChange={handleDescriptionUpdate} />
                     <span className="modal__input_error" id="profile-description-error"></span>
                 </label>
             </fieldset>

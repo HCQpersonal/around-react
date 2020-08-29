@@ -14,8 +14,8 @@ export default function Main(props) {
         <>
             <section className="profile">
                 <div className="profile__avatar-elements">
-                    <img className="profile__avatar" alt="User's profile." src={currentUser && currentUser.avatar} />
-                    <button className="profile__avatar-button" aria-label="Update profile photo" onClick={props.onEditAvatar}></button>
+                    <img className="profile__avatar" alt="User's profile." src={currentUser && currentUser.avatar} onClick={props.onEditAvatar} />
+                    <button className="profile__avatar-button" aria-label="Update profile photo" onClick={props.onEditAvatar} ></button>
                 </div>
                 <div className="profile__info-set">
                     <h1 className="profile__info profile__info_name">{currentUser && currentUser.name}</h1>

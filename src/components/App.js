@@ -17,8 +17,6 @@ export default function App(props) {
   const [cards, setCards] = React.useState([]);
   const [currentUser, setCurrentUser] = React.useState(null);
 
-  // const currentUser = React.useContext(CurrentUserContext);
-
     function handleEditAvatarClick() {
         setIsEditAvatarPopupOpen(true);
     }
@@ -37,15 +35,15 @@ export default function App(props) {
 
     function handleUpdateUserInfo({ name, about }) {
         api.updateUserInfo({ name, about })
-          .then((data) => 
-            {setCurrentUser(data)});
-            
+          .then((res) => {
+            setCurrentUser(res)
+          });
         closeAllPopups();
       }
 
     function handleUpdateAvatar({ avatar }) {
-        api.setUserAvatar(avatar.current.value).then((data) => {
-            setCurrentUser(data);
+        api.setUserAvatar(avatar.current.value).then((res) => {
+            setCurrentUser(res);
           });
         closeAllPopups();
     }
