@@ -38,7 +38,7 @@ export default function Card(props) {
                     <button className={cardLikeButtonClassName} onClick={() => {
                         props.onCardLike(props.card)
                     }}></button>
-                    <p className="grid__photos-like-counter"></p>
+                    <p className="grid__photos-like-counter">{props.card.likes.length}</p>
                 </div>
             </div>
         </li>
