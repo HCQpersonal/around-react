@@ -14,9 +14,10 @@ export default function App(props) {
   const [isEditProfilePopupOpen, setIsEditProfilePopupOpen] = React.useState(false);
   const [isAddPlacePopupOpen, setIsAddPlacePopupOpen] = React.useState(false);
   const [selectedCard, setSelectedCard] = React.useState(null);
+  const [cards, setCards] = React.useState([]);
   const [currentUser, setCurrentUser] = React.useState(null);
 
-//   const currentUser = React.useContext(CurrentUserContext);
+  // const currentUser = React.useContext(CurrentUserContext);
 
     function handleEditAvatarClick() {
         setIsEditAvatarPopupOpen(true);
@@ -32,7 +33,6 @@ export default function App(props) {
 
     function handleCardClick(card) {
         setSelectedCard(card);
-        console.log(card);
     }
 
     function handleUpdateUserInfo({ name, about }) {
@@ -57,9 +57,6 @@ export default function App(props) {
         closeAllPopups();
       }
 
-      const [cards, setCards] = React.useState([]);
-
-
       function handleCardLike(card) {
           const isLiked = card.likes.some((i) => i._id === currentUser._id);
           api.toggleLike(card._id, isLiked).then((newCard) => {
@@ -73,17 +70,6 @@ export default function App(props) {
               setCards(cards.filter((c) => c._id !== card._id));
           });
       }
-  
-      React.useEffect(() => {
-          // setIsLoading(true);
-          api.getCardList()
-              .then((res) => {
-                  setCards((cards) => [...cards, ...res]);
-              }).catch((err) => {
-                  console.log(err);
-              });
-  
-          }, []);  
     
       React.useEffect(() => {
         setCards(cards);
@@ -96,7 +82,6 @@ export default function App(props) {
         setIsEditAvatarPopupOpen(false);
         setSelectedCard(null);
     }
-
     
     React.useEffect(() => {
         api.getUserInfo()
@@ -106,7 +91,17 @@ export default function App(props) {
           }).catch((err) => {
             console.log(err);
           });
-      }, [currentUser]);
+      }, []);
+
+      React.useEffect(() => {
+        // setIsLoading(true);
+        api.getCardList()
+            .then((res) => {
+                setCards((cards) => [...cards, ...res]);
+            }).catch((err) => {
+                console.log(err);
+            });
+        }, []);  
 
   return (
     <>
