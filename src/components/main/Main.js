@@ -73,18 +73,6 @@ export default function Main(props) {
                     </label>
                 </fieldset>
             </PopupWithForm>
-            <PopupWithForm name="profile" title="Edit profile" isOpen={props.isEditProfilePopupOpen} onClose={props.onClosePopups} text="Save">
-                <fieldset className="modal__fieldset">
-                    <label>
-                        <input className="modal__input modal__input_name" name="name" type="text" placeholder="Name" minLength="2" maxLength="40" id="profile-name" />
-                        <span className="modal__input_error" id="profile-name-error"></span>
-                    </label>
-                    <label>
-                        <input className="modal__input modal__input_description" name="job" type="text" placeholder="About me" minLength="2" maxLength="200" id="profile-description" />
-                        <span className="modal__input_error" id="profile-description-error"></span>
-                    </label>
-                </fieldset>
-            </PopupWithForm>
             <PopupWithForm name="image" title="New place" isOpen={props.isAddPlacePopupOpen} onClose={props.onClosePopups} text="Create">
                 <fieldset className="modal__fieldset">
                     <label>

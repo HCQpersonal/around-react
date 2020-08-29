@@ -1,8 +1,9 @@
 import React from 'react';
 import { api } from '../utils/Api';
 import { CurrentUserContext } from '../contexts/CurrentUserContext';
-import Header from './header/Header';
+import { EditProfilePopup } from './editprofilepopup/EditProfilePopup';
 import Footer from './footer/Footer';
+import Header from './header/Header';
 import Main from './main/Main';
 import './../index.css';
 
@@ -31,6 +32,14 @@ export default function App(props) {
         setSelectedCard(card);
         console.log(card);
     }
+
+    function handleUpdateUserInfo({ name, about }) {
+        api.updateUserInfo({ name, about })
+          .then((data) => 
+            {setCurrentUser(data)});
+            
+        closeAllPopups();
+      }
 
     function closeAllPopups() {
         setIsAddPlacePopupOpen(false);
@@ -61,11 +70,15 @@ export default function App(props) {
                     onEditAvatar={handleEditAvatarClick}
                     onCardClick={handleCardClick}
                     onClosePopups={closeAllPopups}
-                    isEditProfilePopupOpen={isEditProfilePopupOpen}
                     isAddPlacePopupOpen={isAddPlacePopupOpen}
                     isEditAvatarPopupOpen={isEditAvatarPopupOpen}
                     selectedCard={selectedCard}
-                />            
+                />
+                <EditProfilePopup
+                    isOpen={isEditProfilePopupOpen}
+                    onClose={closeAllPopups}
+                    onUpdateUser={handleUpdateUserInfo}
+                />           
                 <Footer />
             </div>
         </CurrentUserContext.Provider>
