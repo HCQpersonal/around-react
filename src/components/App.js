@@ -44,7 +44,7 @@ export default function App(props) {
       }
 
     function handleUpdateAvatar({ avatar }) {
-        api.setAvatar(avatar.current.value).then((data) => {
+        api.setUserAvatar(avatar.current.value).then((data) => {
             setCurrentUser(data);
           });
         closeAllPopups();
